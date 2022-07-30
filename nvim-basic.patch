@@ -1,0 +1,145 @@
+diff --git a/lua/user/alpha.lua b/lua/user/alpha.lua
+index 9fe9d2f..6226268 100644
+--- a/lua/user/alpha.lua
++++ b/lua/user/alpha.lua
+@@ -3,15 +3,23 @@ if not status_ok then
+   return
+ end
+ 
++
+ local dashboard = require "alpha.themes.dashboard"
+ dashboard.section.header.val = {
+-  [[                               __                ]],
+-  [[  ___     ___    ___   __  __ /\_\    ___ ___    ]],
+-  [[ / _ `\  / __`\ / __`\/\ \/\ \\/\ \  / __` __`\  ]],
+-  [[/\ \/\ \/\  __//\ \_\ \ \ \_/ |\ \ \/\ \/\ \/\ \ ]],
+-  [[\ \_\ \_\ \____\ \____/\ \___/  \ \_\ \_\ \_\ \_\]],
+-  [[ \/_/\/_/\/____/\/___/  \/__/    \/_/\/_/\/_/\/_/]],
++[[                   .-.     /\     /\              ]],
++[[                  / /     {  `---'  }             ]],
++[[                 / |      {  O   O  }             ]],
++[[   |\     ._ ,-""  `.     ~~>  V  <~~             ]],
++[[   | |,,_/  7        ;     \  \|/  /              ]],
++[[ `;=     ,=(     ,  /       `-----'__             ]],
++[[  |`q  q  ` |    \_,|       /     \  `^\_         ]],
++[[ .=; <> _ ; /  ,/'/ |      {       }\ |\_\_   _   ]],
++[[';|\,j_ \;=\ ,/   `-'      |  \_/  |/ /  \_\_/ )  ]],
++[[    `--'_|\  )              \__/  /(,/     \__/   ]],
++[[   ,' | /  ;'                 (,,/                ]],
++[[  (,,/ (,,/                                       ]],
+ }
++
+ dashboard.section.buttons.val = {
+   dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
+   dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
+@@ -22,7 +30,7 @@ dashboard.section.buttons.val = {
+   dashboard.button("q", " " .. " Quit", ":qa<CR>"),
+ }
+ local function footer()
+-  return "chrisatmachine.com"
++  return "Cats > Dogs"
+ end
+ 
+ dashboard.section.footer.val = footer()
+diff --git a/lua/user/colorscheme.lua b/lua/user/colorscheme.lua
+index 5db0eb6..f047a08 100644
+--- a/lua/user/colorscheme.lua
++++ b/lua/user/colorscheme.lua
+@@ -1,4 +1,4 @@
+-local colorscheme = "darkplus"
++local colorscheme = "solarized"
+ 
+ local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+ if not status_ok then
+diff --git a/lua/user/keymaps.lua b/lua/user/keymaps.lua
+index 7b9bddb..8441072 100644
+--- a/lua/user/keymaps.lua
++++ b/lua/user/keymaps.lua
+@@ -25,8 +25,8 @@ keymap("n", "<C-l>", "<C-w>l", opts)
+ -- Resize with arrows
+ keymap("n", "<C-Up>", ":resize -2<CR>", opts)
+ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
+-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
++keymap("n", "<C-Left>", ":vertical resize +2<CR>", opts)
++keymap("n", "<C-Right>", ":vertical resize -2<CR>", opts)
+ 
+ -- Navigate buffers
+ keymap("n", "<S-l>", ":bnext<CR>", opts)
+@@ -54,6 +54,7 @@ keymap("v", ">", ">gv", opts)
+ 
+ -- NvimTree
+ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
++keymap("n", "<leader>tr", ":NvimTreeRefresh<CR>", opts)
+ 
+ -- Telescope
+ keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+diff --git a/lua/user/lsp/lsp-installer.lua b/lua/user/lsp/lsp-installer.lua
+index 21af371..1df0de4 100644
+--- a/lua/user/lsp/lsp-installer.lua
++++ b/lua/user/lsp/lsp-installer.lua
+@@ -12,6 +12,7 @@ local servers = {
+   "bashls",
+   "jsonls",
+   "yamlls",
++  "clangd"
+ }
+ 
+ lsp_installer.setup()
+diff --git a/lua/user/options.lua b/lua/user/options.lua
+index 6d6ec3b..3523293 100644
+--- a/lua/user/options.lua
++++ b/lua/user/options.lua
+@@ -22,7 +22,7 @@ vim.opt.updatetime = 300                        -- faster completion (4000ms def
+ vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+ vim.opt.expandtab = true                        -- convert tabs to spaces
+ vim.opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
+-vim.opt.tabstop = 2                             -- insert 2 spaces for a tab
++vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
+ vim.opt.cursorline = true                       -- highlight the current line
+ vim.opt.number = true                           -- set numbered lines
+ vim.opt.laststatus = 3
+diff --git a/lua/user/plugins.lua b/lua/user/plugins.lua
+index 7735639..9fcdede 100644
+--- a/lua/user/plugins.lua
++++ b/lua/user/plugins.lua
+@@ -47,7 +47,7 @@ return packer.startup(function(use)
+   use { "numToStr/Comment.nvim", commit = "2c26a00f32b190390b664e56e32fd5347613b9e2" }
+   use { "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" }
+   use { "kyazdani42/nvim-web-devicons", commit = "8d2c5337f0a2d0a17de8e751876eeb192b32310e" }
+-  use { "kyazdani42/nvim-tree.lua", commit = "bdb6d4a25410da35bbf7ce0dbdaa8d60432bc243" }
++  use { "kyazdani42/nvim-tree.lua" }
+   use { "akinsho/bufferline.nvim", commit = "c78b3ecf9539a719828bca82fc7ddb9b3ba0c353" }
+   use { "moll/vim-bbye", commit = "25ef93ac5a87526111f43e5110675032dbcacf56" }
+   use { "nvim-lualine/lualine.nvim", commit = "3362b28f917acc37538b1047f187ff1b5645ecdd" }
+@@ -60,6 +60,9 @@ return packer.startup(function(use)
+   -- Colorschemes
+   use { "folke/tokyonight.nvim", commit = "8223c970677e4d88c9b6b6d81bda23daf11062bb" }
+   use { "lunarvim/darkplus.nvim", commit = "2584cdeefc078351a79073322eb7f14d7fbb1835" }
++  use { "shaunsingh/moonlight.nvim" }
++  use { "Mofiqul/dracula.nvim" }
++  use { "ishan9299/nvim-solarized-lua" }
+ 
+   -- cmp plugins
+   use { "hrsh7th/nvim-cmp", commit = "df6734aa018d6feb4d76ba6bda94b1aeac2b378a" } -- The completion plugin
+@@ -79,6 +82,7 @@ return packer.startup(function(use)
+   use { "jose-elias-alvarez/null-ls.nvim", commit = "ff40739e5be6581899b43385997e39eecdbf9465" } -- for formatters and linters
+   use { "RRethy/vim-illuminate", commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5" }
+ 
++
+   -- Telescope
+   use { "nvim-telescope/telescope.nvim", commit = "d96eaa914aab6cfc4adccb34af421bdd496468b0" }
+ 
+diff --git a/lua/user/telescope.lua b/lua/user/telescope.lua
+index 33f8102..bdd6414 100644
+--- a/lua/user/telescope.lua
++++ b/lua/user/telescope.lua
+@@ -11,7 +11,7 @@ telescope.setup {
+     prompt_prefix = " ",
+     selection_caret = " ",
+     path_display = { "smart" },
+-    file_ignore_patterns = { ".git/", "node_modules" },
++    file_ignore_patterns = { ".git/", "node_modules", ".ld", ".emProject", "segger_rtt", ".uvprojx", ".uvoptx", ".eww", ".icf", ".ewp", ".ewd", ".sct", ".emSession"},
+ 
+     mappings = {
+       i = {
