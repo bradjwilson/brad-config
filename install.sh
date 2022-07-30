@@ -1,7 +1,12 @@
 #! /bin/bash
 
+# Latest neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+./nvim.appimage
+
 # Env depends
-apt install -y curl ripgrep xsel wl-clipboard neovim tmux dconf-editor python3-pynvim git
+apt install -y curl ripgrep xsel wl-clipboard tmux dconf-editor python3-pynvim git
 
 # Copy over tmux config
 cp .tmux.conf ~/.tmux.conf
@@ -12,6 +17,7 @@ git apply ../nvim-basic.patch
 cd ..
 
 # Copy over nvim config
+mkdir ~/.config/nvim
 cp -r nvim-basic-ide ~/.config/nvim
 
 # Copy over terminal config
