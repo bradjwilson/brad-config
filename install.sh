@@ -4,7 +4,7 @@
 apt install -y curl ripgrep xsel wl-clipboard neovim tmux dconf-editor python3-pynvim git
 
 # Copy over tmux config
-mv .tmux.conf ~/.tmux.conf
+cp .tmux.conf ~/.tmux.conf
 
 # Apply my patch to public repo 
 cd nvim-basic-ide/
@@ -12,7 +12,7 @@ git apply ../nvim-basic.patch
 cd ..
 
 # Copy over nvim config
-mv nvim ~/.config/nvim
+cp -r nvim-basic-ide ~/.config/nvim
 
 # Copy over terminal config
 dconf load /org/gnome/terminal/legacy/profiles:/:697efb20-2b3c-4387-9c30-afb2f2ca3769/ < solar-term.dconf
