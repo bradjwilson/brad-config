@@ -44,10 +44,15 @@ fc-cache -fv
 wget https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/bin/scripts/lib/i_linux.sh
 mv i_linux.sh ~/.local/share/fonts/i_linux.sh
 source ~/.local/share/fonts/i_linux.sh
+
+# TODO check if already in bachrc
 echo "source ~/.local/share/fonts/i_linux.sh" >> ~/.bashrc
 
 
 
+# Copy over nvim config
+mkdir ~/.themes
+cp -R rtl88-Themes/. ~/.themes
 
 
 
