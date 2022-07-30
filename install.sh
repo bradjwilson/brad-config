@@ -37,3 +37,7 @@ dconf load /org/gnome/terminal/legacy/profiles:/:697efb20-2b3c-4387-9c30-afb2f2c
 mkdir -p ~/.local/share/fonts
 cd ~/.local/share/fonts && curl -fLo "Ubuntu Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Ubuntu/Regular/complete/Ubuntu%20Nerd%20Font%20Complete.ttf
 
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Ubuntu.zip
+unzip Ubuntu.zip
+unzip Ubuntu.zip -d ~/.local/share/fonts/
+fc-cache -fv
