@@ -36,7 +36,6 @@ dconf load /org/gnome/terminal/legacy/profiles:/:697efb20-2b3c-4387-9c30-afb2f2c
 # Download nerd font
 mkdir -p ~/.local/share/fonts
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Ubuntu.zip
-unzip Ubuntu.zip
 unzip Ubuntu.zip -d ~/.local/share/fonts/
 fc-cache -fv
 
@@ -50,9 +49,10 @@ echo "source ~/.local/share/fonts/i_linux.sh" >> ~/.bashrc
 
 
 
-# Copy over nvim config
+# Copy over themes config
+wget https://github.com/rtlewis88/rtl88-Themes/archive/refs/tags/1.0.zip
 mkdir ~/.themes
-cp -R rtl88-Themes/. ~/.themes
+unzip 1.0.zip -d ~/.themes/
 
 
 

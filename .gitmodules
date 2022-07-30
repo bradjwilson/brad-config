@@ -1,6 +1,3 @@
 [submodule "nvim-basic-ide"]
 	path = nvim-basic-ide
 	url = https://github.com/LunarVim/nvim-basic-ide
-[submodule "rtl88-Themes"]
-	path = rtl88-Themes
-	url = https://github.com/rtlewis88/rtl88-Themes.git
