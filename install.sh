@@ -41,7 +41,7 @@ unzip Ubuntu.zip -d ~/.local/share/fonts/
 fc-cache -fv
 
 # Source the fonts for current and all sessions
-wget https://github.com/ryanoasis/nerd-fonts/master/bin/scripts/lib/i_linux.sh
+wget https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/bin/scripts/lib/i_linux.sh
 mv i_linux.sh ~/.local/share/fonts/i_linux.sh
 source ~/.local/share/fonts/i_linux.sh
 echo "source ~/.local/share/fonts/i_linux.sh" >> ~/.bashrc
