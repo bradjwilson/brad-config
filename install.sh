@@ -52,8 +52,10 @@ echo "source ~/.local/share/fonts/i_linux.sh" >> ~/.bashrc
 # Copy over themes config
 wget https://github.com/rtlewis88/rtl88-Themes/archive/refs/tags/1.0.zip
 mkdir ~/.themes
-unzip 1.0.zip -d ~/.themes/
+unzip 1.0.zip
+mv rtl88-Themes-1.0/solarized-dark-gtk-theme-colorpack_1.3.tar.gz ~/.themes
 
-
+cd ~/.themes
+tar -xvf solarized-dark-gtk-theme-colorpack_1.3.tar.gz
 
 
