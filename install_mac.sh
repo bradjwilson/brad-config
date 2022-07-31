@@ -3,8 +3,8 @@
 git submodule update --init
 
 # Latest neovim
-curl -LO https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-macos.tar.gz
-tar xzvf nvim-macos.tar.gz
+brew install neovim --fetch-HEAD
+brew install tmux
 
 pip3 install pynvim
 
