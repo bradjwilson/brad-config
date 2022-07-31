@@ -5,6 +5,7 @@ git submodule update --init
 # Latest neovim
 brew install neovim --fetch-HEAD
 brew install tmux
+brew install llvm
 
 pip3 install pynvim
 
