@@ -400,5 +400,4 @@ endfun
 
 com! -complete=customlist,Find_defines -nargs=1 Define call Define(<q-args>)
 com! -complete=customlist,Find_defines -nargs=1 Undefine call Undefine(<q-args>)
-
 " vim:ts=2 sw=2 et

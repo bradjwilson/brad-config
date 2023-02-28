@@ -54,8 +54,9 @@ return packer.startup(function(use)
   use { "windwp/nvim-autopairs"} -- Autopairs, integrates with both cmp and treesitter
   use { "numToStr/Comment.nvim"}
   use { "JoosepAlviste/nvim-ts-context-commentstring"}
-  use { "kyazdani42/nvim-web-devicons"}
-  use { "kyazdani42/nvim-tree.lua"}
+  use { "nvim-tree/nvim-web-devicons"}
+  use { "nvim-tree/nvim-tree.lua"}
+
   use { "akinsho/bufferline.nvim"}
   use { "moll/vim-bbye"}
   use { "nvim-lualine/lualine.nvim"}
@@ -63,9 +64,18 @@ return packer.startup(function(use)
   use { "ahmedkhalf/project.nvim"}
   use { "lukas-reineke/indent-blankline.nvim"}
   use { "goolord/alpha-nvim"}
+  use { "danymat/neogen",
+      config = function()
+          require('neogen').setup {}
+      end,
+      requires = "nvim-treesitter/nvim-treesitter",
+      -- Uncomment next line if you want to follow only stable versions
+      -- tag = "*"
+  }
+
 
   -- Colorschemes
-  use { "folke/tokyonight.nvim"}
+  --  use { "folke/tokyonight.nvim"}
   use { "lunarvim/darkplus.nvim"}
   use { "shaunsingh/moonlight.nvim" }
   use { "Mofiqul/dracula.nvim" }
