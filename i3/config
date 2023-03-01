@@ -68,7 +68,7 @@ bindsym Print exec mkdir -p ~/Pictures/Screenshots/$(date +%F)
 bindsym --release Print exec import ~/Pictures/Screenshots/$(date +%F)/$(date +%F-%S-%a-%b-%d)-Screenshot.png
 
 default_border pixel 5
-#for_window [class="*terminal"] border pixel 6
+for_window [class="Gnome-terminal"] border pixel 6
 for_window [class="Google-chrome"] border pixel 6
 
 gaps inner 8
