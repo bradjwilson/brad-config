@@ -75,7 +75,8 @@ return packer.startup(function(use)
 
 
   -- Colorschemes
-  --  use { "folke/tokyonight.nvim"}
+  use { "ellisonleao/gruvbox.nvim"}
+  use { "folke/tokyonight.nvim"}
   use { "lunarvim/darkplus.nvim"}
   use { "shaunsingh/moonlight.nvim" }
   use { "Mofiqul/dracula.nvim" }

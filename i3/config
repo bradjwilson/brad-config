@@ -41,10 +41,15 @@ exec --no-startup-id xrandr --output DP-4 --auto --right-of HDMI-0 --rotate righ
 exec_always --no-startup-id xset r rate 190 30
 
 # Load Default Layout
+# ChromeMain and Terminal
 exec --no-startup-id i3-msg 'workspace 1; append_layout /home/bradjwilson/.config/i3/workspace-1.json'
+# ChromeMessages and Slack 
 exec --no-startup-id i3-msg 'workspace 2; append_layout /home/bradjwilson/.config/i3/workspace-2.json'
+# OBS and Firefox 
 exec --no-startup-id i3-msg 'workspace 3; append_layout /home/bradjwilson/.config/i3/workspace-3.json'
+# Music
 exec --no-startup-id i3-msg 'workspace 4; append_layout /home/bradjwilson/.config/i3/workspace-4.json'
+# ChromeBubblyNet and ChromeKerio
 exec --no-startup-id i3-msg 'workspace 5; append_layout /home/bradjwilson/.config/i3/workspace-5.json'
 
 # Put workspaces on correct monitors
@@ -55,29 +60,49 @@ workspace 4 output DP-4
 workspace 5 output DP-4
 
 # Start applications
-exec --no-startup-id i3-msg workspace 1; i3-msg exec google-chrome
-exec --no-startup-id i3-msg workspace 1; i3-msg exec gnome-terminal
-exec --no-startup-id i3-msg workspace 2; i3-msg exec slack
+# Chrome and Terminal
+exec --no-startup-id i3-msg workspace 1; i3-msg exec 'google-chrome-stable https://google.com --new-window'
+exec --no-startup-id i3-msg exec 'gnome-terminal --hide-menubar --profile=/"Gruvbox Dark/"'
+
+# Messages and slack
+exec --no-startup-id i3-msg workspace 2; i3-msg exec 'google-chrome-stable --new-window --app=https://messages.google.com'
+exec --no-startup-id i3-msg exec slack
+# slack solorized #073642,#002B36,#B58900,#FDF6E3,#CB4B16,#FDF6E3,#2AA198,#DC322F,#002B36,#FDF6E3
+# slack gruvbox #282828,#3c3836,#98971a,#fbf1c7,#3E313C,#EBDBB2,#b8bb26,#fb4934,#3c3836,#EBDBB2 
+
+# OBS and Firefox
 exec --no-startup-id i3-msg workspace 3; i3-msg exec obs
-exec --no-startup-id i3-msg workspace 3; i3-msg exec firefox
-exec --no-startup-id i3-msg workspace 4; i3-msg exec google-chrome --app=youtube.com
+exec --no-startup-id i3-msg exec firefox
+
+# Music Tidal 
+exec --no-startup-id i3-msg workspace 4; i3-msg exec tidal-hifi
+
+# BubblyNetControl and KerberosCam 
+exec --no-startup-id i3-msg workspace 5; i3-msg exec 'google-chrome-stable --new-window --app=https://core.bubblynet.com'
+exec --no-startup-id i3-msg exec 'google-chrome-stable --new-window --app=https://app.kerberos.io/livestream'
+
 
 #Screen shots
-#bindsym $mod+Print exec --no-startup-id import "/home/bradjwilson/Pictures/test.png"
 bindsym Print exec mkdir -p ~/Pictures/Screenshots/$(date +%F)
 bindsym --release Print exec import ~/Pictures/Screenshots/$(date +%F)/$(date +%F-%S-%a-%b-%d)-Screenshot.png
 
 default_border pixel 5
+# Some apps look better with wider borders 
 for_window [class="Gnome-terminal"] border pixel 6
 for_window [class="Google-chrome"] border pixel 6
+for_window [class="firefox"] border pixel 6
 
 gaps inner 8
 gaps outer 10
 
 hide_edge_borders both
 
+#black
 set $wall #000000
-set $high #c84b17 
+#orange
+#set $high #c84b17  
+#yellow
+set $high #caca40
 
 client.focused            $high $high $high #2e9ef4   $high 
 client.focused_inactive   $wall $wall $wall #484e50   $wall 
@@ -244,7 +269,8 @@ bar {
     status_command i3status
     position top
     colors {
-        background #073642
+        #background #073642
+        background #282828
         statusline #ffffff
         separator #666666
 
