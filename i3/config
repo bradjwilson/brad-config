@@ -41,7 +41,7 @@ exec --no-startup-id xrandr --output DP-4 --auto --right-of HDMI-0 --rotate righ
 exec_always --no-startup-id playerctld daemon
 
 #Repeated key rate. Dleay 190ms at 30 chars a second
-exec_always --no-startup-id xset r rate 190 30
+exec_always --no-startup-id xset r rate 190 50
 
 # Load Default Layout
 # ChromeMain and Terminal
@@ -103,6 +103,9 @@ default_border pixel 5
 for_window [class="Gnome-terminal"] border pixel 6
 for_window [class="Google-chrome"] border pixel 6
 for_window [class="firefox"] border pixel 6
+#for_window [class="Python3"] floating enable
+for_window [class="Totem"] floating enable
+for_window [class="generic"] floating enable
 hide_edge_borders both
 gaps outer 10
 gaps inner 8
