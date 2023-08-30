@@ -19,7 +19,7 @@ null_ls.setup {
     formatting.clang_format.with {
       filetypes = { "c", "cpp", "objc", "objcpp" },
     },
-    formatting.black.with { extra_args = { "--fast" } },
+    formatting.black.with { extra_args = { "--fast", "-l 90"} },
     diagnostics.flake8,
   },
 }

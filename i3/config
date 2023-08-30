@@ -35,7 +35,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 
 #Second Vertical Monitor
-exec --no-startup-id xrandr --output DP-4 --auto --right-of HDMI-0 --rotate right
+exec --no-startup-id xrandr --output DP-0 --auto --right-of HDMI-0 --rotate right
 
 # Start playerctl daemon to follow media contex
 exec_always --no-startup-id playerctld daemon
