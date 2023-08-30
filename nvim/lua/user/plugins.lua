@@ -90,7 +90,20 @@ return packer.startup(function(use)
   use { "saadparwaiz1/cmp_luasnip"} -- snippet completions
   use { "hrsh7th/cmp-nvim-lsp"}
   use { "hrsh7th/cmp-nvim-lua"}
+  
+  -- AI Tools 
   use { "github/copilot.vim"}
+  use({
+    "jackMort/ChatGPT.nvim",
+      config = function()
+        require("chatgpt").setup()
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+      }
+  })
 
   -- Generic writing plugins
   use {"iamcco/markdown-preview.nvim"}
